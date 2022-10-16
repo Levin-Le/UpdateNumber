@@ -21,7 +21,7 @@ namespace UpdateNumberApp
             {
                 if (File.Exists(path))
                 {
-                    using var reader = new StreamReader(path);
+                    using var reader = new StreamReader(new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.None));
 
                     //Read the first line of text as the total number.
                     var line = reader.ReadLine();
