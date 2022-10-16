@@ -67,10 +67,20 @@ namespace UpdateNumberApp
         {
             try
             {
-                Number += inputNumber;
+                long totalNumber = (long) Number + (long) inputNumber;
 
-                if (Number > Threshold)
-                    Number -= Threshold;
+                if (totalNumber >= int.MaxValue || totalNumber <= int.MinValue)
+                {
+                    Number = 0;
+                }
+                else
+                {
+                    if (totalNumber > Threshold)
+                        Number = (int) totalNumber - Threshold;
+                    else
+                        Number = (int) totalNumber;
+                }
+
                 return Number;
             }
             catch (Exception e)

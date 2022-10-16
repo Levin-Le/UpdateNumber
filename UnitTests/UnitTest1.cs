@@ -30,6 +30,7 @@ namespace UnitTests
             Assert.AreEqual(13, numUpdate.Number);
         }
 
+        [TestMethod]
         public void TestCalculateTotalInvalid()
         {
             var numUpdate = new UpdateNumber(int.MaxValue);
@@ -38,20 +39,22 @@ namespace UnitTests
             Assert.AreEqual(0, numUpdate.Number);
         }
 
+        [TestMethod]
         public void TestReadNumberInvalid()
         {
             // Arrange
             var numUpdate = new UpdateNumber(0);
-            var invalidName = "@#$%%.xxx";
+            var invalidName = "/:@#$.txt";
 
             // Act
             var bRet = numUpdate.ReadNumber(invalidName);
 
             // Assert
             Assert.AreEqual(0, numUpdate.Number);
-            Assert.IsFalse(bRet);
+            Assert.IsTrue(bRet);
         }
 
+        [TestMethod]
         public void TestReadNumber()
         {
             // Arrange
@@ -69,6 +72,7 @@ namespace UnitTests
             Assert.AreEqual(-100, numUpdate.Number);
         }
 
+        [TestMethod]
         public void TestWriteNumber()
         {
             // Arrange
@@ -83,11 +87,12 @@ namespace UnitTests
             Assert.AreEqual(-100, numUpdate.Number);
         }
 
+        [TestMethod]
         public void TestWriteNumberInvalid()
         {
             // Arrange
             var numUpdate = new UpdateNumber(-100);
-            var validName = "@#$%%";
+            var validName = "/:@#$.txt";
 
             // Act
             var bRet = numUpdate.WriteNumber(validName);
@@ -96,6 +101,7 @@ namespace UnitTests
             Assert.IsFalse(bRet);
         }
 
+        [TestMethod]
         public void TestUpdateNumber()
         {
             // Arrange
